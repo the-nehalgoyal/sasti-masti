@@ -1,0 +1,85 @@
+SIDEQUEST CLOUD ARCHITECTURE
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                         USER BROWSER (CLIENT)                       │
+│                      Next.js React Application                      │
+│                                                                      │
+│  [Mood Selector] → [API Call] → [Quest Cards Display]              │
+│                                                                      │
+│         Deployed on Vercel (Global CDN, instant scaling)           │
+└────────────────────────────┬────────────────────────────────────────┘
+                             │
+                    HTTPS API Call
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                    AWS API GATEWAY (HTTP Layer)                     │
+│                                                                      │
+│  Endpoint: https://api.sidequest.example.com/quests                │
+│  Handles: Authentication, Rate Limiting, CORS                      │
+│  CloudWatch: Request logging & monitoring                          │
+└────────────────────────────┬────────────────────────────────────────┘
+                             │
+              Routes to Lambda Function
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│          AWS LAMBDA (Serverless Compute - Stateless)                │
+│                                                                      │
+│  Function: questMatcher()                                           │
+│  Logic:                                                             │
+│    1. Parse mood parameter from request                            │
+│    2. Query DynamoDB for matching quests                           │
+│    3. Randomize & return top 6 results                             │
+│    4. Return JSON response                                         │
+│                                                                      │
+│  Scaling: Auto-scales from 0 → 1000s of concurrent requests       │
+│  Cost: Pay only for execution time (~$0)                           │
+└────────────────────────────┬────────────────────────────────────────┘
+                             │
+                    DynamoDB Query
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│            AWS DYNAMODB (NoSQL Database - Managed)                  │
+│                                                                      │
+│  Table: Quests                                                      │
+│  Schema:                                                            │
+│    - PK: quest_id (Number)                                         │
+│    - SK: mood (String)                                             │
+│    - Attributes: title, description, duration, cost, location...   │
+│                                                                      │
+│  Queries: O(1) lookups on mood index                               │
+│  Storage: 30 quests = ~10 KB (free tier: 25 GB)                    │
+│  Scaling: On-demand billing (pay per request)                      │
+└─────────────────────────────────────────────────────────────────────┘
+
+ADDITIONAL SERVICES:
+
+┌──────────────────────┐      ┌──────────────────────┐
+│   CloudWatch Logs    │      │   AWS IAM Roles      │
+│                      │      │                      │
+│  - Lambda errors     │      │ - API Gateway→Lambda │
+│  - Request metrics   │      │ - Lambda→DynamoDB    │
+│  - Performance trace │      │ - Least privilege    │
+└──────────────────────┘      └──────────────────────┘
+
+DATA FLOW (Detailed):
+1. User clicks mood "creative"
+2. Next.js frontend calls API Gateway POST /quests?mood=creative
+3. API Gateway authenticates request + logs to CloudWatch
+4. Invokes Lambda function with event = {mood: "creative"}
+5. Lambda queries DynamoDB with KeyConditionExpression (mood = "creative")
+6. Lambda receives ~8-10 matching quests, randomizes, returns 6
+7. Lambda logs execution to CloudWatch
+8. API Gateway returns JSON response to frontend
+9. Frontend renders quest cards with animations
+10. User sees results in <300ms
+
+CLOUD CONCEPTS DEMONSTRATED:
+✓ Virtualization: Lambda = containerized functions (Module 3)
+✓ XaaS Model: SaaS architecture (Module 2)
+✓ Scalability: Auto-scales without infrastructure management
+✓ Security: IAM roles, least privilege, encrypted communication
+✓ Cost Efficiency: Serverless = pay-per-use, free tier sufficient
+✓ Fault Tolerance: AWS manages redundancy, failover
