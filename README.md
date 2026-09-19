@@ -1,4 +1,4 @@
-# 🎮 SIDEQUEST
+#  SIDEQUEST
 ## A Serverless College Activity Discovery Engine
 
 **Live Demo:** https://sidequest-app.vercel.app  
@@ -6,7 +6,7 @@
 
 ---
 
-## 🎯 What is Sidequest?
+##  What is Sidequest?
 
 College students have unlimited free time but zero ideas what to do. Sidequest solves this by matching your mood to unconventional, affordable activities.
 
@@ -16,7 +16,7 @@ Built on AWS serverless architecture (Lambda + DynamoDB + API Gateway).
 
 ---
 
-## ⚡ Quick Start (5 minutes)
+##  Quick Start (5 minutes)
 
 ### Run Locally
 ```bash
@@ -30,13 +30,13 @@ Open http://localhost:3000 — app works with mock data!
 ### Deploy to Vercel (3 minutes)
 1. Push to GitHub
 2. Go to vercel.com → Import repo
-3. Auto-deploys. Done. ✅
+3. Auto-deploys. Done. 
 
 **Now you have a live frontend!**
 
 ---
 
-## ☁️ Deploy AWS Backend (Optional - for full cloud integration)
+##  Deploy AWS Backend (Optional - for full cloud integration)
 
 See `SETUP.md` for complete step-by-step AWS deployment guide.
 
@@ -48,7 +48,7 @@ See `SETUP.md` for complete step-by-step AWS deployment guide.
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 sidequest/
@@ -73,7 +73,7 @@ sidequest/
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ```
 ┌─ Frontend (Vercel) ─────────┐
@@ -105,7 +105,7 @@ sidequest/
 
 ---
 
-## 🎨 The 30 Quests
+##  The 30 Quests
 
 Organized by mood:
 
@@ -129,7 +129,7 @@ Each quest includes:
 
 ---
 
-## 🚀 Features
+##  Features
 
 ✨ **Mood-based discovery** — 8 mood categories  
 ⚡ **Real-time filtering** — DynamoDB queries  
@@ -141,7 +141,7 @@ Each quest includes:
 
 ---
 
-## 💻 Tech Stack
+##  Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
@@ -155,7 +155,7 @@ Each quest includes:
 
 ---
 
-## 📊 UCS531 Syllabus Coverage
+##  UCS531 Syllabus Coverage
 
 ✅ **Module 1: Computing Paradigms**
 - Serverless = distributed computing paradigm
@@ -175,7 +175,7 @@ Each quest includes:
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 ### Local Testing
 ```bash
@@ -198,7 +198,7 @@ curl https://your-api-gateway-url/quests?mood=adventurous
 
 ---
 
-## 📈 Performance
+##  Performance
 
 | Metric | Value |
 |--------|-------|
@@ -211,7 +211,7 @@ curl https://your-api-gateway-url/quests?mood=adventurous
 
 ---
 
-## 💰 Cost (Monthly)
+##  Cost (Monthly)
 
 | Service | Cost (Dev) | Cost (1K users) |
 |---------|---|---|
@@ -223,7 +223,7 @@ curl https://your-api-gateway-url/quests?mood=adventurous
 
 ---
 
-## 🔧 Environment Variables
+##  Environment Variables
 
 No sensitive env vars needed for MVP. To add AWS region support:
 
@@ -235,7 +235,7 @@ AWS_REGION=ap-south-1
 
 ---
 
-## 📚 API Endpoint
+##  API Endpoint
 
 ### POST /quests
 
@@ -270,7 +270,7 @@ AWS_REGION=ap-south-1
 
 ---
 
-## 🔄 Deployment Pipeline
+##  Deployment Pipeline
 
 ```
 Local Dev
@@ -286,7 +286,7 @@ Live URL
 
 ---
 
-## 📖 Documentation
+##  Documentation
 
 - **QUICKSTART.md** — Get running in 5 minutes
 - **SETUP.md** — Full AWS deployment guide
@@ -295,7 +295,7 @@ Live URL
 
 ---
 
-## 🎓 For Your Professor
+##  For The Professor
 
 This project demonstrates:
 
@@ -326,7 +326,7 @@ This project demonstrates:
 
 ---
 
-## 🚀 Future Enhancements
+##  Future Enhancements
 
 - [ ] User authentication (AWS Cognito)
 - [ ] Save favorite quests (user profiles)
@@ -339,7 +339,7 @@ This project demonstrates:
 
 ---
 
-## 📞 Support
+##  Support
 
 - **AWS Docs**: https://docs.aws.amazon.com
 - **Next.js Docs**: https://nextjs.org/docs
@@ -348,7 +348,7 @@ This project demonstrates:
 
 ---
 
-## 📜 License
+##  License
 
 MIT License — Feel free to use, modify, share.
 
@@ -358,10 +358,10 @@ MIT License — Feel free to use, modify, share.
 
 **Nehal**  
 CS Engineering, Thapar Institute (2024-2028)  
-Cosmic Attire Intern | Product Thinker | Cloud Explorer
+
 
 ---
 
-**Status:** ✅ Production Ready | 🎉 Ready to Ship | 📊 Ready to Present
+**Status:**  Production Ready |  Ready to Ship |  Ready to Present
 
-**Deploy now. Ship it. Celebrate. 🚀**
+**Deploy now. Ship it. Celebrate. **
